@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thriftwave</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            background-color: #fff8f5;
+            color: #333;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #ffdde1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #ff4d6d;
+            text-shadow: 2px 2px white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #ff6f91;
+            color: white;
+            padding: 12px 28px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #e85d75;
+            transform: scale(1.05);
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #f5c2c7;
+            margin: 30px 0;
+        }
+
+        h2 {
+            margin-left: 20px;
+            color: #d6336c;
+            font-size: 2em;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 40px 40px 40px;
+        }
+
+        .left {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .left p {
+            font-size: 1.15em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .right {
+            width: 50%;
+            text-align: right;
+        }
+
+        .right img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .slideshow-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .mySlides a {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .mySlides:hover .slide-img {
+            transform: scale(1.02);
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+            color: #fff;
+            background: rgba(214, 51, 108, 0.75);
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #fce5ec;
+        }
+
+        footer a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #d6336c;
+            font-size: 1.2em;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Decorative icons */
+        .purchase-icon {
+            position: absolute;
+            font-size: 1.5em;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .icon1 { top: 50px; left: 20px; animation-delay: 0s; }
+        .icon2 { top: 200px; right: 40px; animation-delay: 1s; }
+        .icon3 { top: 400px; left: 60%; animation-delay: 2s; }
+        .icon4 { top: 600px; left: 5%; animation-delay: 3s; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="purchase-icon icon1">🛍️</div>
+    <div class="purchase-icon icon2">💳</div>
+    <div class="purchase-icon icon3">🧺</div>
+    <div class="purchase-icon icon4">🏷️</div>
+
+    <header>
+        <h1>🛒 THRIFTWAVE</h1>
+        <p><small>FIND YOUR PRODUCT FROM US WITH GREAT QUALITY</small></p>
+        <div class="button-group">
+            <button class="btn" onclick="location.href='{{ url_for('register') }}'">Register</button>
+            <button class="btn" onclick="location.href='{{ url_for('login') }}'">Login</button>
+        </div>
+    </header>
+
+    <hr>
+
+    <h2>REGISTER TO OUR<br>THRIFTWAVE</h2>
+
+    <div class="container">
+        <div class="left">
+            <p>
+                Join the Thriftwave family today by registering with us and enjoy access to high-quality products at unbeatable prices. Already have an account? Simply log in and start shopping your favorites!
+            </p>
+
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <a href="{{ url_for('seller') }}">
+                        <img src="{{ url_for('static', filename='image/seller.png') }}" alt="Seller" class="slide-img">
+                        <div class="caption">👩‍💼 Seller</div>
+                    </a>
+                </div>
+                <div class="mySlides fade">
+                    <a href="{{ url_for('buyer') }}">
+                        <img src="{{ url_for('static', filename='image/buyer.png') }}" alt="Buyer" class="slide-img">
+                        <div class="caption">🛍️ Buyer</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <img src="/static/image/register.png" alt="Seller">
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <a href="{{ url_for('about') }}">CONTACTS</a>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+    </script>
+
+</body>
+</html>

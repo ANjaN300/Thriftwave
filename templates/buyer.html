@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thriftwave - Buyer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffccdc;
+            padding: 20px;
+            text-align: center;
+            color: #a64c79;
+        }
+        .search-filter {
+            text-align: center;
+            margin: 20px;
+        }
+        .search-filter input, .search-filter select, .search-filter button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product-card {
+            background: #ffe6f0;
+            border-radius: 15px;
+            margin: 15px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            background-color: #fcefee;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            border: none;
+            background-color: #ff99bb;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff6c9e;
+        }
+        .info {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛍️ Buyer Page</h1>
+        <p>Find your perfect product!</p>
+    </header>
+
+    <form method="get" action="{{ url_for('buyer') }}" class="search-filter">
+        <input type="text" name="search" placeholder="Search by name..." value="{{ request.args.get('search', '') }}">
+        <select name="category">
+            <option value="all" {% if request.args.get('category') == 'all' %}selected{% endif %}>All Categories</option>
+            <option value="Electronics" {% if request.args.get('category') == 'Electronics' %}selected{% endif %}>Electronics</option>
+            <option value="Accessories" {% if request.args.get('category') == 'Accessories' %}selected{% endif %}>Accessories</option>
+            <option value="Vehicles" {% if request.args.get('category') == 'Vehicles' %}selected{% endif %}>Vehicles</option>
+            <option value="Home Decor" {% if request.args.get('category') == 'Home Decor' %}selected{% endif %}>Home Decor</option>
+            <option value="Books" {% if request.args.get('category') == 'Books' %}selected{% endif %}>Books</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='uploads/' ~ product['image']) }}" alt="Product Image">
+            <h3>{{ product['title'] }}</h3>
+            <p>Category: {{ product['category'] }}</p>
+            <p>₹{{ product['price'] }}</p>
+            <p class="info"><strong>Description:</strong> {{ product['description'] }}</p>
+            <p class="info"><strong>Seller Contact:</strong> {{ product['seller_mobile'] }}</p>
+            <a href="{{ url_for('buynow', product_id=product['id']) }}">
+                <button>Buy Now</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>Made with 💖 by THRIFTWAVE</p>
+    </footer>
+</body>
+</html>

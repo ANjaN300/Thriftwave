@@ -1,0 +1,7 @@
+.env
+*.env
+message.env
+/node_modules
+/build
+/bin
+/target

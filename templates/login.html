@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOGIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fdf6f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #e05f68;
+            margin-top: 20px;
+        }
+        small {
+            color: #888;
+        }
+        table {
+            padding: 20px;
+            background-color: #fff8f5;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input[type="email"], input[type="password"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+        }
+        input[type="submit"] {
+            background-color: #e05f68;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        input[type="submit"]:hover {
+            background-color: #c94b56;
+        }
+        a {
+            text-decoration: none;
+            color: #e05f68;
+        }
+        .flash-msg {
+            color: green;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>🛍️ THRIFTWAVE</h1>
+        <p><small>FIND YOUR PRODUCT FROM US WITH GREAT QUALITY</small></p>
+        <h6><a href="{{ url_for('dashboard') }}">HOME</a> | <a href="{{ url_for('about') }}">ABOUT US</a></h6>
+        <hr style="width: 60%;">
+        <h3>LOGIN</h3>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="flash-msg">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <table>
+                <tr><td>EMAIL ID</td><td><input type="email" name="email" required></td></tr>
+                <tr><td>PASSWORD</td><td><input type="password" name="password" required></td></tr>
+                <tr><td colspan="2" align="center"><input type="submit" value="Login"></td></tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

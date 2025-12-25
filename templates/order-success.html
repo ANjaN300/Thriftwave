@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Success - Thriftwave</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fcefee;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .success-box {
+            text-align: center;
+            background-color: #fff0f5;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 5px solid #d6336c;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 50px;
+            width: 25px;
+            height: 50px;
+            border: solid #d6336c;
+            border-width: 0 5px 5px 0;
+            transform: rotate(45deg);
+            animation: checkmark 0.5s ease forwards;
+        }
+
+        @keyframes checkmark {
+            from {
+                width: 0;
+                height: 0;
+            }
+            to {
+                width: 25px;
+                height: 50px;
+            }
+        }
+
+        .success-box h1 {
+            font-size: 2.5em;
+            color: #d6336c;
+        }
+
+        .success-box p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .success-box a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #ff6fa8;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .success-box a:hover {
+            background-color: #e0538f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="success-box">
+    <div class="checkmark"></div>
+    <h1>🎉 Order Placed!</h1>
+    <p>Your product has been successfully ordered.</p>
+    <p>We’ll contact you shortly with shipping details.</p>
+    <a href="{{ url_for('board') }}">Return to Home</a>
+</div>
+
+</body>
+</html>
