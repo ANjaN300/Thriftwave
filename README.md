@@ -11,12 +11,9 @@ ThriftWave is a second-hand product management system designed to simplify buyin
 - Organized product and user management
 
 ## 🛠️ Tech Stack
-- Java
-- JSP & Servlets
-- MySQL
-- HTML, CSS, JavaScript
-- Apache Tomcat
-- Eclipse IDE
+- Python
+- HTML, CSS
+- Visual Studio Code
 - Git & GitHub
 
 ## ⚙️ Project Setup
